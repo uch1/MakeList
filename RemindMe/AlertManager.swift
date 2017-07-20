@@ -15,7 +15,7 @@ extension Alert {
     // MARK: - Methods
     
     static func createNewAlert(time: Date) -> Alert {
-        let newAlert = NSEntityDescription.insertNewObject(forEntityName: "Alert", into: CoreDataHelper.managedContext) as! Alert
+        let newAlert = Alert(context: CoreDataHelper.managedContext)
         newAlert.time = time as NSDate
         newAlert.isOn = false
         CoreDataHelper.saveObject()

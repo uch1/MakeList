@@ -8,29 +8,63 @@
 
 import UIKit
 
-class ItemsViewController: UIViewController, UITableViewDataSource {
+class ItemsViewController: UIViewController {
 
+    // MARK: - Properties 
+    
     @IBOutlet weak var itemsTableView: UITableView!
     
+    var items = [Item]() {
+        didSet {
+            itemsTableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        items = Item.fetchItems()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueToItem" {
+            if let destination = segue.destination as? UINavigationController, let itemVC = destination.visibleViewController as? ItemViewController {
+                itemVC.delegate = self
+            }
+        }
+    }
 
+}
+
+// MARK: - UITableViewDataSource
+
+extension ItemsViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCellIdentifier", for: indexPath)
-        cell.textLabel?.text = "test"
+        let item = items[indexPath.row]
+        cell.textLabel?.text = item.title
         return cell
+    }
+    
+}
+
+// MARK: - ItemViewControllerDelegate
+
+extension ItemsViewController: ItemViewControllerDelegate {
+    
+    func addItem(_ item: Item) {
+        items.append(item)
+        dismiss(animated: true, completion: nil)
     }
 }
 

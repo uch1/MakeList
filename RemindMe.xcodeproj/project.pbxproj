@@ -13,6 +13,7 @@
 		5817F5EC1F1D3D2800458991 /* RemindMe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5817F5EA1F1D3D2800458991 /* RemindMe.xcdatamodeld */; };
 		5817F5EE1F1D3D2800458991 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5817F5ED1F1D3D2800458991 /* Assets.xcassets */; };
 		5817F5F11F1D3D2800458991 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5817F5EF1F1D3D2800458991 /* LaunchScreen.storyboard */; };
+		582054411F2142920057FAD2 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582054401F2142920057FAD2 /* ItemViewController.swift */; };
 		583C106B1F211231008BE7D3 /* ItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583C106A1F211231008BE7D3 /* ItemManager.swift */; };
 		583C106D1F2116BD008BE7D3 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583C106C1F2116BD008BE7D3 /* AlertManager.swift */; };
 		587E9CEB1F1E959900603849 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587E9CEA1F1E959900603849 /* CoreDataHelper.swift */; };
@@ -27,6 +28,7 @@
 		5817F5ED1F1D3D2800458991 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5817F5F01F1D3D2800458991 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5817F5F21F1D3D2800458991 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		582054401F2142920057FAD2 /* ItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 		583C106A1F211231008BE7D3 /* ItemManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemManager.swift; sourceTree = "<group>"; };
 		583C106C1F2116BD008BE7D3 /* AlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		587E9CEA1F1E959900603849 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				5817F5E51F1D3D2800458991 /* ItemsViewController.swift */,
+				582054401F2142920057FAD2 /* ItemViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				582054411F2142920057FAD2 /* ItemViewController.swift in Sources */,
 				5817F5E61F1D3D2800458991 /* ItemsViewController.swift in Sources */,
 				5817F5E41F1D3D2800458991 /* AppDelegate.swift in Sources */,
 				5817F5EC1F1D3D2800458991 /* RemindMe.xcdatamodeld in Sources */,

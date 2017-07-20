@@ -15,7 +15,7 @@ extension Item {
     // MARK: - Methods
     
     static func createNewItem(title: String) -> Item {
-        let newItem = NSEntityDescription.insertNewObject(forEntityName: "Item", into: CoreDataHelper.managedContext) as! Item
+        let newItem = Item(context: CoreDataHelper.managedContext)
         newItem.title = title
         newItem.startDate = NSDate()
         newItem.isCompleted = false
