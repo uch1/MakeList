@@ -21,24 +21,38 @@ class ItemsViewController: UIViewController {
         }
     }
     
+    // MARK: - UIViewController lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         items = Item.fetchItems()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        itemsTableView.reloadData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    // MARK: - Storyboard Segues
+    
+    private struct StoryboardSegue {
+        static let segueToAddItem = "segueToAddItem"
+        static let segueToEditItem = "segueToEditItem"
+    }
+    
+    
+    
     // MARK: - Actions
-    
-    
-    
-    
-    
-    
+    @IBAction func addNewItem(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: StoryboardSegue.segueToAddItem, sender: nil)
+    }
     
     // MARK: - Navigation 
     
@@ -72,6 +86,15 @@ extension ItemsViewController: UITableViewDataSource {
         let item = items[indexPath.row]
         cell.textLabel?.text = item.title
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            let item = items[indexPath.row]
+            Item.delete(item: item)
+            items = Item.fetchItems()
+        }
     }
     
 }

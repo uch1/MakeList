@@ -23,10 +23,25 @@ extension Item {
         return newItem
     }
     
+    static func saveItem() {
+        do {
+            try CoreDataHelper.managedContext.save()
+        } catch let error as NSError {
+            print("Could not save \(error)")
+        }
+    }
+    
     static func fetchItems() -> [Item] {
         let request: NSFetchRequest<Item> = Item.fetchRequest()
         let items = try! CoreDataHelper.managedContext.fetch(request)
         return items
     }
+    
+    static func delete(item: Item) {
+        CoreDataHelper.managedContext.delete(item)
+        CoreDataHelper.saveObject()
+    }
+    
+    
 
 }

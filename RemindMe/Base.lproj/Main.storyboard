@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3KL-gQ-UwA">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="itemCellIdentifier" textLabel="wbW-aT-Wo2" style="IBUITableViewCellStyleDefault" id="I73-vy-z5x">
@@ -60,13 +60,16 @@
                             <constraint firstItem="3KL-gQ-UwA" firstAttribute="top" secondItem="QyJ-YT-S0g" secondAttribute="top" id="cvg-rR-oLM"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Items" id="jXf-q2-Jtf">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="xOR-8y-FuS">
                             <connections>
+                                <action selector="addNewItem:" destination="Br1-TI-Ovk" id="1Qs-au-GIG"/>
                                 <segue destination="8nG-7u-dQv" kind="presentation" identifier="segueToAddItem" id="iOY-RB-QVK"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="itemsTableView" destination="3KL-gQ-UwA" id="jt5-zx-2v3"/>
                     </connections>
