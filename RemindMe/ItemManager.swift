@@ -11,7 +11,6 @@ import CoreData
 
 extension Item {
     
-    
     // MARK: - Methods
     
     static func createNewItem(title: String) -> Item {

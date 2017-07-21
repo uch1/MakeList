@@ -12,6 +12,7 @@ class ItemsViewController: UIViewController {
 
     // MARK: - Properties 
     
+    let itemCellIdentifier = "itemCellIdentifier"
     @IBOutlet weak var itemsTableView: UITableView!
     
     var items = [Item]() {
@@ -30,6 +31,16 @@ class ItemsViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+    // MARK: - Actions
+    
+    
+    
+    
+    
+    
+    
+    // MARK: - Navigation 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueToItem" {
@@ -50,7 +61,7 @@ extension ItemsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCellIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "itemCellIdentifier", for: indexPath)
         let item = items[indexPath.row]
         cell.textLabel?.text = item.title
         return cell

@@ -6,16 +6,17 @@
 //  Copyright © 2017 Uchenna Aguocha. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import CoreData
 
 struct CoreDataHelper {
     
     // MARK: - Properties
     
-    static let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    static let persistentContainer = appDelegate.persistentContainer
+    static let persistentContainer = CoreDataStack.sharedInstance.persistentContainer
     static let managedContext = persistentContainer.viewContext
+    
+    
     
     // MARK: - Methods 
     
