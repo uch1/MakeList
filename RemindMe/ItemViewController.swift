@@ -28,7 +28,13 @@ class ItemViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        if let item = item {
+            titleTextField.text = item.title
+            navigationItem.leftBarButtonItem = nil
+            navigationItem.rightBarButtonItem = nil
+        } else {
+            print("item is nil")
+        }
     }
 
     override func didReceiveMemoryWarning() {

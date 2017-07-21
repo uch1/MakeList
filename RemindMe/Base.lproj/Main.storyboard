@@ -41,10 +41,14 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Ias-4N-kfK" kind="show" identifier="segueToEditItem" id="tJi-Rr-FRC"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="Br1-TI-Ovk" id="Qdl-oM-wEP"/>
+                                    <outlet property="delegate" destination="Br1-TI-Ovk" id="rsq-an-HBj"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -59,7 +63,7 @@
                     <navigationItem key="navigationItem" title="Items" id="jXf-q2-Jtf">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="xOR-8y-FuS">
                             <connections>
-                                <segue destination="8nG-7u-dQv" kind="presentation" identifier="segueToItem" id="iOY-RB-QVK"/>
+                                <segue destination="8nG-7u-dQv" kind="presentation" identifier="segueToAddItem" id="iOY-RB-QVK"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -153,7 +157,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gUQ-5H-o7S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1232.8" y="320.68965517241384"/>
+            <point key="canvasLocation" x="1278" y="-326"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="tJi-Rr-FRC"/>
+    </inferredMetricsTieBreakers>
 </document>

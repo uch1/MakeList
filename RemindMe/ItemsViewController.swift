@@ -43,9 +43,16 @@ class ItemsViewController: UIViewController {
     // MARK: - Navigation 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "segueToItem" {
+        if segue.identifier == "segueToAddItem" {
             if let destination = segue.destination as? UINavigationController, let itemVC = destination.visibleViewController as? ItemViewController {
                 itemVC.delegate = self
+                            }
+        } else if segue.identifier == "segueToEditItem" {
+            if let indexPath = itemsTableView.indexPathForSelectedRow {
+                let item = items[indexPath.row]
+                if let destination = segue.destination as? ItemViewController {
+                    destination.item = item
+                }
             }
         }
     }
@@ -65,6 +72,16 @@ extension ItemsViewController: UITableViewDataSource {
         let item = items[indexPath.row]
         cell.textLabel?.text = item.title
         return cell
+    }
+    
+}
+
+// MARK: - UITableViewDelegate
+
+extension ItemsViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }
