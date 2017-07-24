@@ -54,6 +54,15 @@ class ItemsViewController: UIViewController {
         performSegue(withIdentifier: StoryboardSegue.segueToAddItem, sender: nil)
     }
     
+    func setCompletedButtonTitle(for item: Item, cell: ItemTableViewCell) {
+        //item.isCompleted ? cell.tapCompletedButton.setTitle("Completed", for: .normal) : cell.tapCompletedButton.setTitle("Not Completed", for: .normal)
+        if item.isCompleted {
+            cell.completedButton.setTitle("Completed", for: .normal)
+        } else {
+            cell.completedButton.setTitle("Not Completed", for: .normal)
+        }
+    }
+    
     // MARK: - Navigation 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -82,9 +91,22 @@ extension ItemsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "itemCellIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "itemCellIdentifier", for: indexPath) as! ItemTableViewCell
         let item = items[indexPath.row]
-        cell.textLabel?.text = item.title
+        //cell.textLabel?.text = item.title
+        cell.titleLabel.text = item.title
+        cell.dateTitle.text = item.startDate?.convertToString()
+        
+        setCompletedButtonTitle(for: item, cell: cell)
+        
+        cell.tapAction = { [weak self] (cell) in
+            item.isCompleted = !item.isCompleted
+            Item.saveItem()
+            
+            self?.setCompletedButtonTitle(for: item, cell: cell as! ItemTableViewCell)
+        }
+        
+        
         return cell
     }
     
