@@ -13,10 +13,10 @@ extension Item {
     
     // MARK: - Methods
     
-    static func createNewItem(title: String) -> Item {
+    static func createNewItem(title: String, date: Date) -> Item {
         let newItem = Item(context: CoreDataHelper.managedContext)
         newItem.title = title
-        newItem.startDate = NSDate()
+        newItem.startDate = date as NSDate
         newItem.isCompleted = false
         CoreDataHelper.saveObject()
         

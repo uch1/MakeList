@@ -60,7 +60,7 @@
                                             <outlet property="completedButton" destination="Of5-yc-hqx" id="wyy-UK-MY8"/>
                                             <outlet property="dateTitle" destination="Tnq-hN-Bbg" id="A78-TZ-v9Z"/>
                                             <outlet property="titleLabel" destination="3gE-Ai-WvF" id="IXg-IK-w6V"/>
-                                            <segue destination="Ias-4N-kfK" kind="show" identifier="segueToEditItem" id="tJi-Rr-FRC"/>
+                                            <segue destination="JcY-zv-zUc" kind="show" identifier="segueToEditItem" id="bOE-P9-tg4"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -97,52 +97,59 @@
             <point key="canvasLocation" x="452" y="320.68965517241384"/>
         </scene>
         <!--Item-->
-        <scene sceneID="E98-rB-H9D">
+        <scene sceneID="lLq-Ub-uLq">
             <objects>
-                <viewController id="Ias-4N-kfK" customClass="ItemViewController" customModule="RemindMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="JcY-zv-zUc" customClass="ItemViewController" customModule="RemindMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="f9J-AW-ARi"/>
-                        <viewControllerLayoutGuide type="bottom" id="u9t-m8-Scv"/>
+                        <viewControllerLayoutGuide type="top" id="oAU-u0-rIG"/>
+                        <viewControllerLayoutGuide type="bottom" id="501-24-6Od"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="lWe-6T-tdp">
+                    <view key="view" contentMode="scaleToFill" id="XGh-3S-dTy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="38s-z8-jz3">
-                                <rect key="frame" x="16" y="80" width="343" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7kN-pn-D3J">
+                                <rect key="frame" x="16" y="85" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="kJY-Lh-YHz">
+                                <rect key="frame" x="0.0" y="123" width="375" height="216"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <date key="date" timeIntervalSinceReferenceDate="522694777.72420102">
+                                    <!--2017-07-25 16:59:37 +0000-->
+                                </date>
+                                <connections>
+                                    <action selector="selectDate:" destination="JcY-zv-zUc" eventType="valueChanged" id="clI-gN-Tp7"/>
+                                </connections>
+                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="38s-z8-jz3" firstAttribute="leading" secondItem="lWe-6T-tdp" secondAttribute="leading" constant="16" id="fp0-54-g1A"/>
-                            <constraint firstAttribute="trailing" secondItem="38s-z8-jz3" secondAttribute="trailing" constant="16" id="le3-HW-J4M"/>
-                            <constraint firstItem="38s-z8-jz3" firstAttribute="top" secondItem="f9J-AW-ARi" secondAttribute="bottom" constant="16" id="zd2-qx-7KV"/>
-                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Item" id="Ytg-fT-fCL">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="KDF-f8-lql">
+                    <navigationItem key="navigationItem" title="Item" id="YHG-3x-u2f">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="69D-Nb-r3H">
                             <connections>
-                                <action selector="tapCancel:" destination="Ias-4N-kfK" id="jp3-Df-HF5"/>
+                                <action selector="tapCancel:" destination="JcY-zv-zUc" id="OcJ-gr-cxp"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="aFR-V6-3wf">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="xZZ-xQ-MyF">
                             <connections>
-                                <action selector="tapSave:" destination="Ias-4N-kfK" id="E79-Xp-ryM"/>
+                                <action selector="tapSave:" destination="JcY-zv-zUc" id="iDB-WV-xon"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="cancelBarButton" destination="KDF-f8-lql" id="YUF-F2-V4R"/>
-                        <outlet property="saveBarButton" destination="aFR-V6-3wf" id="jsm-sx-nIr"/>
-                        <outlet property="titleTextField" destination="38s-z8-jz3" id="cMY-wM-vxN"/>
+                        <outlet property="cancelBarButton" destination="69D-Nb-r3H" id="M7P-oX-RDa"/>
+                        <outlet property="datePicker" destination="kJY-Lh-YHz" id="4ev-iP-5a0"/>
+                        <outlet property="saveBarButton" destination="xZZ-xQ-MyF" id="zMF-ic-Co1"/>
+                        <outlet property="titleTextField" destination="7kN-pn-D3J" id="oh9-3u-Mhl"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6HF-Gn-bwq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bIh-tr-VWb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2172" y="320.68965517241384"/>
+            <point key="canvasLocation" x="1897" y="321"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Z3y-ic-73a">
@@ -173,7 +180,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Ias-4N-kfK" kind="relationship" relationship="rootViewController" id="R7n-pp-9jU"/>
+                        <segue destination="JcY-zv-zUc" kind="relationship" relationship="rootViewController" id="hYG-uK-8Dj"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gUQ-5H-o7S" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -182,6 +189,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="tJi-Rr-FRC"/>
+        <segue reference="bOE-P9-tg4"/>
     </inferredMetricsTieBreakers>
 </document>

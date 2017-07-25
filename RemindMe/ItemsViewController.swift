@@ -12,6 +12,8 @@ class ItemsViewController: UIViewController {
 
     // MARK: - Properties 
     
+    
+    
     let itemCellIdentifier = "itemCellIdentifier"
     @IBOutlet weak var itemsTableView: UITableView!
     
@@ -20,6 +22,7 @@ class ItemsViewController: UIViewController {
             itemsTableView.reloadData()
         }
     }
+    
     
     // MARK: - UIViewController lifecycle
     
