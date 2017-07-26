@@ -31,7 +31,7 @@ class ItemsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        items = Item.fetchItems()
+        items = Item.fetchSortedItems()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -58,7 +58,7 @@ class ItemsViewController: UIViewController {
     }
     
     func generateItemCatalog() -> [Date: [Item]] {
-        let todoItems = Item.fetchItems()
+        let todoItems = Item.fetchSortedItems()
         var sectionGroups = [Date: [Item]]()
         
         for todoItem in todoItems {
@@ -175,7 +175,7 @@ extension ItemsViewController: UITableViewDataSource {
         if editingStyle == .delete {
             let item = items[indexPath.row]
             Item.delete(item: item)
-            items = Item.fetchItems()
+            items = Item.fetchSortedItems()
         }
     }
     

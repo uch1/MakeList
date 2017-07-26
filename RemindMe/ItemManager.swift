@@ -31,10 +31,10 @@ extension Item {
         }
     }
     
-    static func fetchItems() -> [Item] {
+    static func fetchSortedItems() -> [Item] {
         let request: NSFetchRequest<Item> = Item.fetchRequest()
         let items = try! CoreDataHelper.managedContext.fetch(request)
-        return items
+        return items.sorted { $0.startDate!.timeIntervalSince1970 < $1.startDate!.timeIntervalSince1970 }
     }
     
     static func delete(item: Item) {
