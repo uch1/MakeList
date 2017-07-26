@@ -10,18 +10,20 @@ import UIKit
 
 class ItemsViewController: UIViewController {
 
-    // MARK: - Properties 
-    
-    
+    // MARK: - Properties
     
     let itemCellIdentifier = "itemCellIdentifier"
     @IBOutlet weak var itemsTableView: UITableView!
+    
     
     var items = [Item]() {
         didSet {
             itemsTableView.reloadData()
         }
     }
+    
+    var sections = [Date: [Item]]() //Dictionary<Date, Array<Item>>()
+    var sortedDays = [Date]()
     
     
     // MARK: - UIViewController lifecycle
@@ -35,12 +37,50 @@ class ItemsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        itemsTableView.reloadData()
+        //itemsTableView.reloadData()
+        
+        reloadData()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: - Helper methods
+    
+    func reloadData() {
+        DispatchQueue.main.async {
+            self.sections = self.generateItemCatalog()
+            self.sortedDays = self.sections.keys.sorted { $0 < $1 } as [Date]
+            self.itemsTableView.reloadData()
+        }
+    }
+    
+    func generateItemCatalog() -> [Date: [Item]] {
+        let todoItems = Item.fetchItems()
+        var sectionGroups = [Date: [Item]]()
+        
+        for todoItem in todoItems {
+            let dateOfToday = Item.dateAtStartOfDay(date: todoItem.startDate)
+            let itemsToday = sectionGroups[dateOfToday]
+            
+            if itemsToday == nil {
+                sectionGroups[dateOfToday] = [todoItem]
+            } else {
+                sectionGroups[dateOfToday]?.append(todoItem)
+            }
+        }
+        return sectionGroups
+    }
+    
+    func getItem(for indexPath: IndexPath) -> Item {
+        let dateOfToday = sortedDays[indexPath.section]
+        guard let itemsToday = sections[dateOfToday] else {
+            return Item()
+        }
+        let item = itemsToday[indexPath.row]
+        return item
     }
     
     // MARK: - Storyboard Segues
@@ -89,16 +129,33 @@ class ItemsViewController: UIViewController {
 
 extension ItemsViewController: UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sections.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        //return items.count
+        let dateToday = sortedDays[section]
+        guard let section = sections[dateToday] else { return 0 }
+        return section.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let dateToday = sortedDays[section]
+        return dateToday.formatDate()
+        //Date.convertToString(dateToday)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemCellIdentifier", for: indexPath) as! ItemTableViewCell
-        let item = items[indexPath.row]
+        
+        let item = getItem(for: indexPath)
+        
+        //let item = items[indexPath.row]
         //cell.textLabel?.text = item.title
         cell.titleLabel.text = item.title
-        cell.dateTitle.text = item.startDate?.convertToString()
+        //cell.dateTitle.text = item.startDate?.convertToString()
+        cell.dateTitle.text = item.startDate?.formatTime()
         
         setCompletedButtonTitle(for: item, cell: cell)
         

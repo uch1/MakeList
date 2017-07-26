@@ -42,6 +42,18 @@ extension Item {
         CoreDataHelper.saveObject()
     }
     
+    static func dateAtStartOfDay(date: NSDate?) -> Date {
+        let calendar = Calendar.current
+        let _ = calendar.timeZone
+        
+        guard let date = date else { return Date() }
+        var dateComponents = calendar.dateComponents([.day, .month, .year], from: date as Date)
+        dateComponents.hour = 0; dateComponents.minute = 0; dateComponents.second = 0
+        
+        guard let dateFromComponents = calendar.date(from: dateComponents) else { return Date() }
+        return dateFromComponents
+    }
+    
     
 
 }
