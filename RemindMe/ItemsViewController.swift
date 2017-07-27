@@ -9,7 +9,7 @@
 import UIKit
 
 class ItemsViewController: UIViewController {
-
+    
     // MARK: - Properties
     
     let itemCellIdentifier = "itemCellIdentifier"
