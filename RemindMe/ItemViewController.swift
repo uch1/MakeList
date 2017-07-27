@@ -21,9 +21,12 @@ class ItemViewController: UIViewController {
     @IBOutlet weak var saveBarButton: UIBarButtonItem!
     @IBOutlet weak var cancelBarButton: UIBarButtonItem!
     @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var alertTableView: UITableView!
     
     var delegate: ItemViewControllerDelegate?
     var item: Item?
+    
+    let alertDetails = [["Alert"], ["None", "At time of event", "1 minute before", "5 minutes before", "10 minutes"]]
     
     var selectedStartDate: Date!
     
@@ -42,6 +45,7 @@ class ItemViewController: UIViewController {
             print("item is nil")
             selectedStartDate = datePicker.date
         }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -87,5 +91,57 @@ class ItemViewController: UIViewController {
     */
 
 }
+
+extension ItemViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return alertDetails.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        if section == 0 {
+//            return 1
+//        } else {
+//            return 5
+//        }
+        return alertDetails[section].count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell: UITableViewCell!
+        
+        switch indexPath.section {
+        case 0:
+            cell = tableView.dequeueReusableCell(withIdentifier: "alertTitle", for: indexPath)
+            let firstAlertDetailArray = alertDetails[0]
+            cell.textLabel?.text = firstAlertDetailArray[indexPath.row]
+        case 1:
+            cell = tableView.dequeueReusableCell(withIdentifier: "alertTime", for: indexPath)
+            let secondAlertDetailArray = alertDetails[1]
+            cell.textLabel?.text = secondAlertDetailArray[indexPath.row]
+        default: break
+        }
+        return cell
+    }
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
