@@ -111,11 +111,11 @@ extension ItemViewController: UITableViewDataSource {
         
         switch indexPath.section {
         case 0:
-            cell = tableView.dequeueReusableCell(withIdentifier: "alertTitle", for: indexPath)
+            cell = tableView.dequeueReusableCell(withIdentifier: "alertTitleIdentifier", for: indexPath)
             let firstAlertDetailArray = alertDetails[0]
             cell.textLabel?.text = firstAlertDetailArray[indexPath.row]
         case 1:
-            cell = tableView.dequeueReusableCell(withIdentifier: "alertTime", for: indexPath)
+            cell = tableView.dequeueReusableCell(withIdentifier: "alertTimeIdentifier", for: indexPath)
             let secondAlertDetailArray = alertDetails[1]
             cell.textLabel?.text = secondAlertDetailArray[indexPath.row]
         default: break
@@ -123,11 +123,37 @@ extension ItemViewController: UITableViewDataSource {
         return cell
     }
 
-
+    
 
 }
 
+extension ItemViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if indexPath.section == 1 {
+            selectRow(in: tableView, at: indexPath)
+        }
+    }
+    
+  
 
+}
+
+extension UITableViewDelegate {
+    
+    func selectRow(in tableView: UITableView, at indexPath: IndexPath) {
+        let section = indexPath.section
+        let numberOfRows = tableView.numberOfRows(inSection: section)
+        for row in 0..<numberOfRows {
+            if let cell = tableView.cellForRow(at: IndexPath(row: row, section: section)) {
+                cell.accessoryType = row == indexPath.row ? .checkmark : .none
+            }
+        }
+    }
+    
+    
+
+}
 
 
 

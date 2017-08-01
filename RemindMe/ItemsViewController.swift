@@ -10,17 +10,20 @@ import UIKit
 
 class ItemsViewController: UIViewController {
     
+    
+    
+    
     // MARK: - Properties
     
     let itemCellIdentifier = "itemCellIdentifier"
     @IBOutlet weak var itemsTableView: UITableView!
     
     
-    var items = [Item]() {
-        didSet {
-            itemsTableView.reloadData()
-        }
-    }
+//    var items = [Item]() {
+//        didSet {
+//            itemsTableView.reloadData()
+//        }
+//    }
     
     var sections = [Date: [Item]]() //Dictionary<Date, Array<Item>>()
     var sortedDays = [Date]()
@@ -31,7 +34,7 @@ class ItemsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        items = Item.fetchSortedItems()
+        //items = Item.fetchSortedItems()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -115,7 +118,7 @@ class ItemsViewController: UIViewController {
                             }
         } else if segue.identifier == "segueToEditItem" {
             if let indexPath = itemsTableView.indexPathForSelectedRow {
-                let item = items[indexPath.row]
+                let item = getItem(for: indexPath)
                 if let destination = segue.destination as? ItemViewController {
                     destination.item = item
                 }
@@ -173,9 +176,9 @@ extension ItemsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {
-            let item = items[indexPath.row]
+            let item = getItem(for: indexPath)
             Item.delete(item: item)
-            items = Item.fetchSortedItems()
+            reloadData()
         }
     }
     
@@ -196,7 +199,8 @@ extension ItemsViewController: UITableViewDelegate {
 extension ItemsViewController: ItemViewControllerDelegate {
     
     func addItem(_ item: Item) {
-        items.append(item)
+        
+        reloadData()
         dismiss(animated: true, completion: nil)
     }
     
