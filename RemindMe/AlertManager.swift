@@ -29,4 +29,13 @@ extension Alert {
         let alerts = try! CoreDataHelper.managedContext.fetch(request)
         return alerts
     }
+    
+    static func insertAlertWithItem(_ item: Item, level: Int) {
+        let newAlert = Alert(context: CoreDataHelper.managedContext)
+        newAlert.item = item
+        newAlert.level = Int32(level)
+        CoreDataHelper.saveObject()
+        
+        
+    }
 }

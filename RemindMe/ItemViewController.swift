@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 protocol ItemViewControllerDelegate {
     func addItem(_ item: Item)
@@ -14,8 +15,16 @@ protocol ItemViewControllerDelegate {
 
 class ItemViewController: UIViewController {
     
-    // MARK: - Properties
+    enum AlertTime: Int {
+    case none
+    case atTimeOfEvent
+    case oneMinuteBefore
+    case fiveMinutesBefore
+    case tenMinutesBefore
+    }
     
+    
+    // MARK: - Properties
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var saveBarButton: UIBarButtonItem!
@@ -25,10 +34,23 @@ class ItemViewController: UIViewController {
     
     var delegate: ItemViewControllerDelegate?
     var item: Item?
-    
-    let alertDetails = [["Alert"], ["None", "At time of event", "1 minute before", "5 minutes before", "10 minutes"]]
-    
     var selectedStartDate: Date!
+    var selectedRow = 0
+    let alertDetails = [["Alert"], ["None", "At time of event", " 1 minute before", "5 minutes before", "10 minutes before"]]
+    
+    var alertMinutes: Int? {
+        var alertMinutes: Int?
+        if let alertTime = AlertTime(rawValue: selectedRow) {
+            switch alertTime {
+            case .none: alertMinutes = nil
+            case .atTimeOfEvent: alertMinutes = 0
+            case .oneMinuteBefore: alertMinutes = -1
+            case .fiveMinutesBefore: alertMinutes = -5
+            case .tenMinutesBefore: alertMinutes = -10
+            }
+        }
+        return alertMinutes
+    }
     
     // MARK: - Methods
 
@@ -41,6 +63,9 @@ class ItemViewController: UIViewController {
             navigationItem.rightBarButtonItem = nil
             datePicker.date = date as Date
             selectedStartDate = datePicker.date
+            if let alert = item.alert {
+                selectedRow = Int(alert.level)
+            }
         } else {
             print("item is nil")
             selectedStartDate = datePicker.date
@@ -70,6 +95,11 @@ class ItemViewController: UIViewController {
     @IBAction func tapSave(_ sender: UIBarButtonItem) {
         if let text = titleTextField.text {
             let item = Item.createNewItem(title: text, date: selectedStartDate)
+            Alert.insertAlertWithItem(item, level: selectedRow)
+            if let alertMinutes = alertMinutes {
+                scheduleNotification(title: text, date: selectedStartDate, minutes: alertMinutes)
+            }
+            
             delegate?.addItem(item)
         }
     }
@@ -79,6 +109,32 @@ class ItemViewController: UIViewController {
     }
     
     
+    private func scheduleNotification(title: String, date: Date, minutes: Int) {
+        let content = UNMutableNotificationContent()
+        
+        content.title = title
+        content.subtitle = " "
+        content.body = " "
+        
+        let newDate = createNewDate(fromDate: date, withMinutesAlert: minutes)
+        if let newDate = newDate {
+            let minutes = Calendar.current.component(.minute, from: newDate)
+            var dateComponents = DateComponents()
+            dateComponents.minute = minutes
+            
+            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+            let request = UNNotificationRequest(identifier: "timerDone", content: content, trigger: trigger)
+            
+            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        }
+    }
+    
+    private func createNewDate(fromDate: Date, withMinutesAlert: Int) -> Date? {
+        var dateComponents = DateComponents()
+        dateComponents.setValue(withMinutesAlert, for: .minute)
+        let newDate = Calendar.current.date(byAdding: dateComponents, to: fromDate)
+        return newDate
+    }
 
     /*
     // MARK: - Navigation
@@ -98,11 +154,6 @@ extension ItemViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if section == 0 {
-//            return 1
-//        } else {
-//            return 5
-//        }
         return alertDetails[section].count
     }
     
@@ -114,10 +165,15 @@ extension ItemViewController: UITableViewDataSource {
             cell = tableView.dequeueReusableCell(withIdentifier: "alertTitleIdentifier", for: indexPath)
             let firstAlertDetailArray = alertDetails[0]
             cell.textLabel?.text = firstAlertDetailArray[indexPath.row]
+            
         case 1:
             cell = tableView.dequeueReusableCell(withIdentifier: "alertTimeIdentifier", for: indexPath)
             let secondAlertDetailArray = alertDetails[1]
             cell.textLabel?.text = secondAlertDetailArray[indexPath.row]
+            
+            if selectedRow == indexPath.row {
+                cell.accessoryType = .checkmark
+            }
         default: break
         }
         return cell
@@ -132,6 +188,7 @@ extension ItemViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.section == 1 {
             selectRow(in: tableView, at: indexPath)
+            selectedRow = indexPath.row
         }
     }
     

@@ -18,9 +18,9 @@
 		582054431F227D170057FAD2 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582054421F227D170057FAD2 /* CoreDataStack.swift */; };
 		583C106B1F211231008BE7D3 /* ItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583C106A1F211231008BE7D3 /* ItemManager.swift */; };
 		583C106D1F2116BD008BE7D3 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583C106C1F2116BD008BE7D3 /* AlertManager.swift */; };
-		584BD27A1F269A2A003BDBBF /* Date+convertToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BD2791F269A2A003BDBBF /* Date+convertToString.swift */; };
-		584BD27C1F269C24003BDBBF /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BD27B1F269C24003BDBBF /* UIColor+extension.swift */; };
 		587E9CEB1F1E959900603849 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587E9CEA1F1E959900603849 /* CoreDataHelper.swift */; };
+		58E0F1621F33CB0000D24CC4 /* Date+convertToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0F1601F33CB0000D24CC4 /* Date+convertToString.swift */; };
+		58E0F1631F33CB0000D24CC4 /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E0F1611F33CB0000D24CC4 /* UIColor+extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,9 +37,9 @@
 		582054421F227D170057FAD2 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = ../../../Downloads/CoreDataStack.swift; sourceTree = "<group>"; };
 		583C106A1F211231008BE7D3 /* ItemManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemManager.swift; sourceTree = "<group>"; };
 		583C106C1F2116BD008BE7D3 /* AlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
-		584BD2791F269A2A003BDBBF /* Date+convertToString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Date+convertToString.swift"; path = "../../ToDo/ToDo/Date+convertToString.swift"; sourceTree = "<group>"; };
-		584BD27B1F269C24003BDBBF /* UIColor+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+extension.swift"; path = "../../ToDo/ToDo/UIColor+extension.swift"; sourceTree = "<group>"; };
 		587E9CEA1F1E959900603849 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		58E0F1601F33CB0000D24CC4 /* Date+convertToString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Date+convertToString.swift"; path = "../../../Documents/Swift_Files/Date+convertToString.swift"; sourceTree = "<group>"; };
+		58E0F1611F33CB0000D24CC4 /* UIColor+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+extension.swift"; path = "../../../Documents/Swift_Files/UIColor+extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +92,8 @@
 				587E9CEA1F1E959900603849 /* CoreDataHelper.swift */,
 				583C106A1F211231008BE7D3 /* ItemManager.swift */,
 				583C106C1F2116BD008BE7D3 /* AlertManager.swift */,
-				584BD2791F269A2A003BDBBF /* Date+convertToString.swift */,
+				58E0F1601F33CB0000D24CC4 /* Date+convertToString.swift */,
+				58E0F1611F33CB0000D24CC4 /* UIColor+extension.swift */,
 			);
 			name = "Model ";
 			sourceTree = "<group>";
@@ -110,7 +111,6 @@
 			children = (
 				5817F5E51F1D3D2800458991 /* ItemsViewController.swift */,
 				582054401F2142920057FAD2 /* ItemViewController.swift */,
-				584BD27B1F269C24003BDBBF /* UIColor+extension.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -191,14 +191,14 @@
 				582054411F2142920057FAD2 /* ItemViewController.swift in Sources */,
 				5806756C1F26792E00C3F6B3 /* ItemTableViewCell.swift in Sources */,
 				5817F5E61F1D3D2800458991 /* ItemsViewController.swift in Sources */,
+				58E0F1631F33CB0000D24CC4 /* UIColor+extension.swift in Sources */,
 				5817F5E41F1D3D2800458991 /* AppDelegate.swift in Sources */,
 				5817F5EC1F1D3D2800458991 /* RemindMe.xcdatamodeld in Sources */,
 				583C106B1F211231008BE7D3 /* ItemManager.swift in Sources */,
 				583C106D1F2116BD008BE7D3 /* AlertManager.swift in Sources */,
 				587E9CEB1F1E959900603849 /* CoreDataHelper.swift in Sources */,
-				584BD27C1F269C24003BDBBF /* UIColor+extension.swift in Sources */,
+				58E0F1621F33CB0000D24CC4 /* Date+convertToString.swift in Sources */,
 				582054431F227D170057FAD2 /* CoreDataStack.swift in Sources */,
-				584BD27A1F269A2A003BDBBF /* Date+convertToString.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

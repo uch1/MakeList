@@ -2,6 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16F73" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Alert" representedClassName="Alert" syncable="YES" codeGenerationType="class">
         <attribute name="isOn" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="level" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="time" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="item" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Item" inverseName="alert" inverseEntity="Item" syncable="YES"/>
     </entity>
@@ -12,7 +13,7 @@
         <relationship name="alert" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Alert" inverseName="item" inverseEntity="Alert" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Alert" positionX="-54" positionY="18" width="128" height="90"/>
+        <element name="Alert" positionX="-54" positionY="18" width="128" height="105"/>
         <element name="Item" positionX="-63" positionY="-18" width="128" height="105"/>
     </elements>
 </model>
