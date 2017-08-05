@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Items-->
+        <!--RemindMe-->
         <scene sceneID="Vo8-Le-pkb">
             <objects>
                 <viewController id="Br1-TI-Ovk" customClass="ItemsViewController" customModule="RemindMe" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,11 +18,11 @@
                         <viewControllerLayoutGuide type="bottom" id="rQx-Mi-c8o"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QyJ-YT-S0g">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3KL-gQ-UwA">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="559"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="itemCellIdentifier" id="I73-vy-z5x" customClass="ItemTableViewCell" customModule="RemindMe" customModuleProvider="target">
@@ -44,7 +44,10 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3gE-Ai-WvF">
-                                                    <rect key="frame" x="16" y="0.0" width="230" height="21"/>
+                                                    <rect key="frame" x="16" y="0.0" width="238" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="238" id="6dK-In-cJ4"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -55,8 +58,7 @@
                                                         <constraint firstAttribute="width" constant="238" id="MZz-jf-qnv"/>
                                                         <constraint firstAttribute="height" constant="21" id="ngb-BJ-BJ9"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -64,7 +66,6 @@
                                                 <constraint firstItem="Tnq-hN-Bbg" firstAttribute="leading" secondItem="gnK-zO-QTB" secondAttribute="leading" constant="16" id="5Fw-5V-eEX"/>
                                                 <constraint firstAttribute="bottom" secondItem="Tnq-hN-Bbg" secondAttribute="bottom" constant="1" id="9US-ec-63h"/>
                                                 <constraint firstItem="Tnq-hN-Bbg" firstAttribute="top" secondItem="3gE-Ai-WvF" secondAttribute="bottom" constant="1" id="DrP-Gx-3j9"/>
-                                                <constraint firstItem="Of5-yc-hqx" firstAttribute="leading" secondItem="3gE-Ai-WvF" secondAttribute="trailing" constant="8" id="Lwl-Af-n5J"/>
                                                 <constraint firstItem="3gE-Ai-WvF" firstAttribute="leading" secondItem="gnK-zO-QTB" secondAttribute="leading" constant="16" id="Q0E-ij-AVq"/>
                                                 <constraint firstItem="Of5-yc-hqx" firstAttribute="centerY" secondItem="gnK-zO-QTB" secondAttribute="centerY" id="Yuu-o6-9Uo"/>
                                                 <constraint firstAttribute="trailing" secondItem="Of5-yc-hqx" secondAttribute="trailing" constant="8" id="foW-Pf-PIs"/>
@@ -94,8 +95,9 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Items" id="jXf-q2-Jtf">
+                    <navigationItem key="navigationItem" title="RemindMe" id="jXf-q2-Jtf">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="xOR-8y-FuS">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="addNewItem:" destination="Br1-TI-Ovk" id="1Qs-au-GIG"/>
                                 <segue destination="8nG-7u-dQv" kind="presentation" identifier="segueToAddItem" id="iOY-RB-QVK"/>
@@ -111,7 +113,7 @@
             </objects>
             <point key="canvasLocation" x="452" y="320.68965517241384"/>
         </scene>
-        <!--Item-->
+        <!--RemindMe-->
         <scene sceneID="lLq-Ub-uLq">
             <objects>
                 <viewController id="JcY-zv-zUc" customClass="ItemViewController" customModule="RemindMe" customModuleProvider="target" sceneMemberID="viewController">
@@ -120,17 +122,17 @@
                         <viewControllerLayoutGuide type="bottom" id="501-24-6Od"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="XGh-3S-dTy">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7kN-pn-D3J">
-                                <rect key="frame" x="16" y="85" width="343" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add a task..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7kN-pn-D3J">
+                                <rect key="frame" x="16" y="21" width="343" height="30"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="yes" spellCheckingType="yes" keyboardAppearance="light" returnKeyType="go"/>
                             </textField>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="kJY-Lh-YHz">
-                                <rect key="frame" x="0.0" y="123" width="375" height="216"/>
+                                <rect key="frame" x="0.0" y="59" width="375" height="216"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="216" id="JWb-kC-RwX"/>
                                 </constraints>
@@ -142,7 +144,7 @@
                                 </connections>
                             </datePicker>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="9vo-1Z-7Uc">
-                                <rect key="frame" x="0.0" y="354" width="375" height="269"/>
+                                <rect key="frame" x="0.0" y="290" width="375" height="313"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="alertTitleIdentifier" textLabel="AWu-wp-EIE" detailTextLabel="cjo-8u-ML2" style="IBUITableViewCellStyleValue1" id="YEg-ai-DSC">
@@ -153,9 +155,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Alert" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AWu-wp-EIE">
-                                                    <rect key="frame" x="15" y="12" width="37" height="20.5"/>
+                                                    <rect key="frame" x="15" y="12" width="35" height="20"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -207,13 +209,15 @@
                             <constraint firstItem="kJY-Lh-YHz" firstAttribute="top" secondItem="7kN-pn-D3J" secondAttribute="bottom" constant="8" id="w4T-ZR-hKf"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Item" id="YHG-3x-u2f">
+                    <navigationItem key="navigationItem" title="RemindMe" id="YHG-3x-u2f">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="69D-Nb-r3H">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="tapCancel:" destination="JcY-zv-zUc" id="OcJ-gr-cxp"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="xZZ-xQ-MyF">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="tapSave:" destination="JcY-zv-zUc" id="iDB-WV-xon"/>
                             </connections>
@@ -229,16 +233,17 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bIh-tr-VWb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1896.8" y="320.68965517241384"/>
+            <point key="canvasLocation" x="798" y="1272"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Z3y-ic-73a">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gGH-0S-Z2N" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gjB-iP-k2c">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="gjB-iP-k2c">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.37110524979999998" green="0.86976522840000003" blue="0.1093815046" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -254,9 +259,10 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8nG-7u-dQv" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vtd-3n-ipU">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="vtd-3n-ipU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.2416133285" green="0.61480575800000004" blue="0.84217053649999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -265,10 +271,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gUQ-5H-o7S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1278" y="-326"/>
+            <point key="canvasLocation" x="1274" y="321"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="bOE-P9-tg4"/>
+        <segue reference="hYG-uK-8Dj"/>
     </inferredMetricsTieBreakers>
 </document>

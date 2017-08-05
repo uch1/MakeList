@@ -24,7 +24,7 @@ class ItemTableViewCell: UITableViewCell {
         
         completedButton.layer.cornerRadius = 5
         completedButton.layer.borderWidth = 1
-        completedButton.layer.borderColor = UIColor.defaultBlue.cgColor
+        //completedButton.layer.borderColor = UIColor.radicalRed as? CGColor
     }
     
     
