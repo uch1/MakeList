@@ -27,6 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Set navigation item button tint color
         UIBarButtonItem.appearance().tintColor = UIColor.white
         
+        // Set background to tint color
+        
+        
         // Override point for customization after application launch.
 
         let center = UNUserNotificationCenter.current()

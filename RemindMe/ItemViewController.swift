@@ -32,6 +32,7 @@ class ItemViewController: UIViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var alertTableView: UITableView!
     
+    var selectedIndex: IndexPath?
     var delegate: ItemViewControllerDelegate?
     var item: Item?
     var selectedStartDate: Date!
@@ -52,10 +53,10 @@ class ItemViewController: UIViewController {
         return alertMinutes
     }
     
-    // MARK: - Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
         if let item = item, let date = item.startDate {
             titleTextField.text = item.title
@@ -78,6 +79,18 @@ class ItemViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // Hide keyboard when user touches outside of keyboard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    // Hide the keyboard when a user presses the return key
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        titleTextField.resignFirstResponder()
+        return (true)
+    }
+    
+    
     override func willMove(toParentViewController parent: UIViewController?) {
         if parent == nil {
             item?.title = titleTextField.text
@@ -85,6 +98,8 @@ class ItemViewController: UIViewController {
             Item.saveItem()
         }
     }
+
+    
     
     // Mark: - Actions 
     
@@ -145,14 +160,16 @@ class ItemViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+   
 
 }
 
 extension ItemViewController: UITableViewDataSource {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return alertDetails.count
     }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return alertDetails[section].count
     }
@@ -190,6 +207,7 @@ extension ItemViewController: UITableViewDelegate {
             selectRow(in: tableView, at: indexPath)
             selectedRow = indexPath.row
         }
+        self.selectedIndex = indexPath
     }
     
   

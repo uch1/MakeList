@@ -12,20 +12,22 @@ class ItemsViewController: UIViewController {
     
     
     
-    
+    // Set navigation bar tint / background color
+//    UINavigationBar.appearance().barTintColor = UIColor.radicalRed
+//    UINavigationBar.appearance().barTintColor = UIColor.aliceBlue
     // MARK: - Properties
     
     let itemCellIdentifier = "itemCellIdentifier"
     @IBOutlet weak var itemsTableView: UITableView!
     
     
-//    var items = [Item]() {
-//        didSet {
-//            itemsTableView.reloadData()
-//        }
-//    }
+    var items = [Item]() {
+        didSet {
+            itemsTableView.reloadData()
+        }
+    }
     
-    var sections = [Date: [Item]]() //Dictionary<Date, Array<Item>>()
+    var sections = Dictionary<Date, Array<Item>>() //[Date: [Item]]() Dictionary<Date, Array<Item>>()
     var sortedDays = [Date]()
     
     
@@ -167,6 +169,7 @@ extension ItemsViewController: UITableViewDataSource {
             Item.saveItem()
             
             self?.setCompletedButtonTitle(for: item, cell: cell as! ItemTableViewCell)
+            
         }
         
         
