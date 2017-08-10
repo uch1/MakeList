@@ -326,9 +326,10 @@
 				DEVELOPMENT_TEAM = 854F25WCHE;
 				INFOPLIST_FILE = RemindMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.coolKid.RemindMe;
+				PRODUCT_BUNDLE_IDENTIFIER = com.UchennaAguocha.MakeList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -339,9 +340,10 @@
 				DEVELOPMENT_TEAM = 854F25WCHE;
 				INFOPLIST_FILE = RemindMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.coolKid.RemindMe;
+				PRODUCT_BUNDLE_IDENTIFIER = com.UchennaAguocha.MakeList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

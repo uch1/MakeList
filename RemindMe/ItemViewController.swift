@@ -13,7 +13,7 @@ protocol ItemViewControllerDelegate {
     func addItem(_ item: Item)
 }
 
-class ItemViewController: UIViewController {
+class ItemViewController: UIViewController, UITextFieldDelegate {
     
     enum AlertTime: Int {
     case none
@@ -57,6 +57,8 @@ class ItemViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // TODO: - delete if it doesn't work
+        titleTextField.delegate = self
 
         if let item = item, let date = item.startDate {
             titleTextField.text = item.title
@@ -86,7 +88,7 @@ class ItemViewController: UIViewController {
     
     // Hide the keyboard when a user presses the return key
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        titleTextField.resignFirstResponder()
+        self.titleTextField.resignFirstResponder()
         return (true)
     }
     
@@ -128,7 +130,7 @@ class ItemViewController: UIViewController {
         let content = UNMutableNotificationContent()
         
         content.title = title
-        content.subtitle = " "
+        content.subtitle = "Hey, don't forget!"
         content.body = " "
         
         let newDate = createNewDate(fromDate: date, withMinutesAlert: minutes)
@@ -225,9 +227,6 @@ extension UITableViewDelegate {
             }
         }
     }
-    
-    
-
 }
 
 
