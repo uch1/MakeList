@@ -38,7 +38,9 @@ class ItemViewController: UIViewController, UITextFieldDelegate {
     var selectedStartDate: Date!
     var selectedRow = 0
     let alertDetails = [["Alert"], ["None", "At time of event", " 1 minute before", "5 minutes before", "10 minutes before"]]
+    var alertLabel = "None"
     
+
     var alertMinutes: Int? {
         var alertMinutes: Int?
         if let alertTime = AlertTime(rawValue: selectedRow) {
@@ -68,6 +70,7 @@ class ItemViewController: UIViewController, UITextFieldDelegate {
             selectedStartDate = datePicker.date
             if let alert = item.alert {
                 selectedRow = Int(alert.level)
+                alertLabel = alertDetails[1][Int(alert.level)]
             }
         } else {
             print("item is nil")
@@ -184,7 +187,7 @@ extension ItemViewController: UITableViewDataSource {
             cell = tableView.dequeueReusableCell(withIdentifier: "alertTitleIdentifier", for: indexPath)
             let firstAlertDetailArray = alertDetails[0]
             cell.textLabel?.text = firstAlertDetailArray[indexPath.row]
-            
+            cell.detailTextLabel?.text = alertLabel
         case 1:
             cell = tableView.dequeueReusableCell(withIdentifier: "alertTimeIdentifier", for: indexPath)
             let secondAlertDetailArray = alertDetails[1]
@@ -208,6 +211,9 @@ extension ItemViewController: UITableViewDelegate {
         if indexPath.section == 1 {
             selectRow(in: tableView, at: indexPath)
             selectedRow = indexPath.row
+            alertLabel = alertDetails[1][indexPath.row]
+            
+            tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
         }
         self.selectedIndex = indexPath
     }
