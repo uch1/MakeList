@@ -2,8 +2,8 @@
 MakeList is a to-do-list app for the iphone that allows you to create a list of your daily activities and it helps you stay on track.The app provides you with user friendly tools such as creating a task with data, time, and an alert to remind you.
 
 
-<div class="container-well text-center">
-  <div class="row">
+<div class="well text-center">
+  <div class="container row">
     <div class="col-md-4">
       <a href="#"><img src="ml1.jpg" alt="Image 1" height="400" width="250" /></a>    
     </div>
