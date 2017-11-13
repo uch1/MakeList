@@ -16,7 +16,7 @@ MakeList is a to-do-list app for the iphone that allows you to create a list of 
   </div>
 </div>
 
-## MakeList Features
+### MakeList Features
 - Create a list of tasks
 - Set an alert
 - Finish off your task by using the completion button
